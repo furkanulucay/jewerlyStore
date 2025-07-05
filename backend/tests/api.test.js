@@ -10,7 +10,7 @@ describe('GET /products', () => {
 
     const product = res.body[0];
     expect(product).toHaveProperty('name');
-    expect(product).toHaveProperty('price'); // Hesaplanan fiyat
+    expect(product).toHaveProperty('price');
     expect(product).toHaveProperty('popularityScore');
     expect(product).toHaveProperty('weight');
     expect(product).toHaveProperty('images');

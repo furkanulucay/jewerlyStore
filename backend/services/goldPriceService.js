@@ -20,7 +20,7 @@ const getGoldPrice = async () => {
     }
   });
 
-  const price = res.data.price;
+  const price = res.data.price_gram_24k;
 
   cache.set('goldPrice', price); // Save the cache
   return price;

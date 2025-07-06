@@ -16,3 +16,17 @@ describe('GET /products', () => {
     expect(product).toHaveProperty('images');
   });
 });
+
+describe('GET /products with filters', () => {
+  it('should filter products by minPrice and minPopularity', async () => {
+    const res = await request(app).get('/products?minPrice=300&minPopularity=4.0');
+
+    expect(res.statusCode).toBe(200);
+    expect(Array.isArray(res.body)).toBe(true);
+
+    res.body.forEach(product => {
+      expect(product.price).toBeGreaterThanOrEqual(300);
+      expect(product.popularity).toBeGreaterThanOrEqual(4.0);
+    });
+  });
+});

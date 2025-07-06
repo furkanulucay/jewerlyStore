@@ -53,6 +53,7 @@ const styles = {
     gap: '1rem',
     width: '1300px',
     padding: '1rem 0',
+
   },
   cardWrapper: {
     flex: '0 0 auto',

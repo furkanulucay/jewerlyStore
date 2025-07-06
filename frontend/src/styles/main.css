@@ -1,0 +1,22 @@
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #b3b3b3;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box; 
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #969696; 
+  border-radius: 10px;
+}

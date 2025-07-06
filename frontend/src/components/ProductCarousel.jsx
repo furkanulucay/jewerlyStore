@@ -1,32 +1,28 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import ProductCard from './ProductCard';
 
 const ProductCarousel = ({ products }) => {
-  const [scrollIndex, setScrollIndex] = useState(0);
+  const scrollContainerRef = useRef(null);
 
-  const itemsPerPage = 4;
-  const totalPages = Math.ceil(products.length / itemsPerPage);
+  const scrollByAmount = 320;
 
   const handlePrev = () => {
-    setScrollIndex((prev) => Math.max(prev - 1, 0));
+    scrollContainerRef.current.scrollBy({ left: -scrollByAmount, behavior: 'smooth' });
   };
 
   const handleNext = () => {
-    setScrollIndex((prev) => Math.min(prev + 1, totalPages - 1));
+    scrollContainerRef.current.scrollBy({ left: scrollByAmount, behavior: 'smooth' });
   };
 
-  const visibleProducts = products.slice(
-    scrollIndex * itemsPerPage,
-    scrollIndex * itemsPerPage + itemsPerPage
-  );
-
   return (
-    <div style={styles.carousel}>
+    <div style={styles.carouselWrapper}>
       <button onClick={handlePrev} style={styles.arrowButton}>{'<'}</button>
 
-      <div style={styles.carouselWindow}>
-        {visibleProducts.map((product, i) => (
-          <ProductCard key={i} product={product} />
+      <div style={styles.carouselScrollContainer} ref={scrollContainerRef}>
+        {products.map((product, i) => (
+          <div key={i} style={styles.cardWrapper}>
+            <ProductCard product={product} />
+          </div>
         ))}
       </div>
 
@@ -36,11 +32,11 @@ const ProductCarousel = ({ products }) => {
 };
 
 const styles = {
-  carousel: {
+  carouselWrapper: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: '4rem',
+    marginTop: '3rem',
   },
   arrowButton: {
     fontSize: '2rem',
@@ -49,13 +45,19 @@ const styles = {
     cursor: 'pointer',
     padding: '0 1rem',
   },
-  carouselWindow: {
+  carouselScrollContainer: {
     display: 'flex',
-    overflow: 'hidden',
-    width: '1500px',
+    overflowX: 'auto',
+    scrollSnapType: 'x mandatory',
+    scrollBehavior: 'smooth',
     gap: '1rem',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: '1300px',
+    padding: '1rem 0',
+  },
+  cardWrapper: {
+    flex: '0 0 auto',
+    scrollSnapAlign: 'start',
+    width: '300px',
   },
 };
 

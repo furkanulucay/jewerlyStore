@@ -38,7 +38,7 @@ const ProductCard = ({ product }) => {
                                      '#D9D9D9',
                 border: 'none',
                 outline: selectedColor === color ? '1px solid black' : 'none',
-                outlineOffset: '2px',
+                outlineOffset: '4px',
             }}
           />
         ))}
@@ -53,7 +53,7 @@ const ProductCard = ({ product }) => {
 
 const styles = {
   card: {
-    padding: '3rem',
+    margin: '3rem',
     marginBottom: '1rem',
   },
   image: {
@@ -71,8 +71,10 @@ const styles = {
     height: 20,
     borderRadius: '50%',
     cursor: 'pointer',
-    padding: 8,
   },
+  selectedColorLabel: {
+    marginTop: 8,
+  }
 };
 
 export default ProductCard;

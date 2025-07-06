@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PopularityRate from './PopularityRate';
 
 const ProductCard = ({ product }) => {
   const [selectedColor, setSelectedColor] = useState('yellow');
@@ -21,9 +22,18 @@ const ProductCard = ({ product }) => {
         style={styles.image}
       />
 
-      <h3>{product.name}</h3>
-      <p>Price: ${product.price}</p>
-      <p>Popularity: {product.popularity}/5</p>
+      <div style={styles.cardLabelsRow}>
+        <h3>{product.name}</h3>
+        <p style={styles.price}>${product.price}</p>
+      
+        <div style={styles.selectedColorLabel}>
+            {COLOR_NAMES[selectedColor]}
+        </div>
+        <div style={styles.starRow}>
+            <PopularityRate score={product.popularity} />
+            <span style={styles.popularityScore}>{product.popularity}/5</span>
+        </div>
+      </div>
 
       <div style={styles.colorPickerContainer}>
         {['yellow', 'rose', 'white'].map((color) => (
@@ -42,10 +52,6 @@ const ProductCard = ({ product }) => {
             }}
           />
         ))}
-      </div>
-      
-      <div style={styles.selectedColorLabel}>
-        {COLOR_NAMES[selectedColor]}
       </div>
     </div>
   );
@@ -72,9 +78,34 @@ const styles = {
     borderRadius: '50%',
     cursor: 'pointer',
   },
-  selectedColorLabel: {
-    marginTop: 8,
-  }
+  cardLabelsRow: {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  marginTop: 8,
+},
+
+selectedColorLabel: {
+  fontSize: '0.9rem',
+  marginBottom: 4,
+  textAlign: 'left',
+},
+
+starRow: {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.5rem',
+},
+
+popularityScore: {
+  fontSize: '0.9rem',
+  color: '#555',
+},
+
+price: {
+  marginTop: '0.5rem',
+}
+
 };
 
 export default ProductCard;

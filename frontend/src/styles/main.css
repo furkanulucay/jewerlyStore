@@ -23,15 +23,22 @@
 
 /*Font customization*/
 @font-face {
-  font-family: 'Montserrat';
-  src: url('..public/fonts/montserat/Montserrat-Regular.ttf') format('truetype');
+  font-family: 'Montserrat-Regular';
+  src: url('../../public/fonts/montserat/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat-Medium';
+  src: url('../../public/fonts/montserat/Montserrat-Medium.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Avenir';
-  src: url('/fonts/avenir/Avenir-Roman.ttf') format('truetype');
+  src: url('../../public/fonts/avenir/Avenir-Book.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

@@ -23,17 +23,8 @@ const ProductCard = ({ product }) => {
       />
 
       <div style={styles.cardLabelsRow}>
-        <h3>{product.name}</h3>
-        <p style={styles.price}>${product.price}</p>
-      
-        <div style={styles.selectedColorLabel}>
-            {COLOR_NAMES[selectedColor]}
-        </div>
-        <div style={styles.starRow}>
-            <PopularityRate score={product.popularity} />
-            <span style={styles.popularityScore}>{product.popularity}/5</span>
-        </div>
-      </div>
+        <span style={styles.productName}>{product.name}</span>
+        <span style={styles.price}>${product.price} USD</span>
 
       <div style={styles.colorPickerContainer}>
         {['yellow', 'rose', 'white'].map((color) => (
@@ -53,6 +44,16 @@ const ProductCard = ({ product }) => {
           />
         ))}
       </div>
+
+      <div style={styles.selectedColorLabel}>
+            {COLOR_NAMES[selectedColor]}
+        </div>
+        <div style={styles.starRow}>
+            <PopularityRate score={product.popularity} />
+            <span style={styles.popularityScore}>{product.popularity}/5</span>
+        </div>
+      </div>
+
     </div>
   );
 };
@@ -66,11 +67,14 @@ const styles = {
     display: 'block',
     marginBottom: '1rem',
     width: '250px',
+    height: '250px',
+    borderRadius: '10%',
   },
   colorPickerContainer: {
     display: 'flex',
     gap: '10px',
-    marginTop: '10px',
+    marginBottom: '10px',
+    marginTop: '1rem',
   },
   colorButton: {
     width: 20,
@@ -86,24 +90,34 @@ const styles = {
 },
 
 selectedColorLabel: {
-  fontSize: '0.9rem',
-  marginBottom: 4,
+  marginBottom: '0.5rem',
   textAlign: 'left',
+  fontFamily: 'Avenir',
+  fontSize: 12,
 },
 
 starRow: {
   display: 'flex',
   alignItems: 'center',
   gap: '0.5rem',
+  
 },
 
 popularityScore: {
-  fontSize: '0.9rem',
   color: '#555',
+  fontFamily: 'Avenir',
+  fontSize: 14,
 },
 
 price: {
-  marginTop: '0.5rem',
+  marginTop: '0.5rem',  
+  fontFamily: 'Montserrat-Regular',
+  fontSize: 15,
+},
+
+productName: {
+  fontFamily: 'Montserrat-Medium',
+  fontSize: 15,
 }
 
 };

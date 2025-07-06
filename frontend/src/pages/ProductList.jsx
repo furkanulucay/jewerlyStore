@@ -13,7 +13,7 @@ const ProductList = () => {
 
   return (
     <div style={{ padding: '2rem', textAlign: 'center' }}>
-      <h1 style={{ marginBottom: '1.5rem' }}>Product List</h1>
+      <p style={{ fontFamily: 'Avenir', fontSize: 45 }}>Product List</p>
       <ProductCarousel products={products} />
     </div>
   );

@@ -31,11 +31,9 @@ const StarRating = ({ score }) => {
 const styles = {
   starContainer: {
     display: 'flex',
-    gap: '4px',
-    marginTop: '4px',
   },
   star: {
-    fontSize: '1.3rem',
+    fontSize: 14,
     color: '#FFD700',
   },
 };

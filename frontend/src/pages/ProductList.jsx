@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchProducts } from '../services/api';
-import ProductCard from '../components/ProductCard';
+import ProductCarousel from '../components/ProductCarousel';
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -8,17 +8,13 @@ const ProductList = () => {
   useEffect(() => {
     fetchProducts()
       .then(setProducts)
-      .catch((err) => console.error('Error fetching products:', err));
+      .catch((err) => console.error('API error:', err));
   }, []);
 
   return (
-    <div>
-      <h2 style={{ textAlign: 'center' }}>Product List</h2>
-      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-        {products.map((p, i) => (
-          <ProductCard key={i} product={p} />
-        ))}
-      </div>
+    <div style={{ padding: '2rem', textAlign: 'center' }}>
+      <h1 style={{ marginBottom: '1.5rem' }}>Product List</h1>
+      <ProductCarousel products={products} />
     </div>
   );
 };

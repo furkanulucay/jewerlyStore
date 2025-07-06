@@ -1,7 +1,7 @@
 const axios = require('axios');
 const NodeCache = require('node-cache');
 
-const cache = new NodeCache({ stdTTL: 1800 }); // Get gold price every 30 minutes
+const cache = new NodeCache({ stdTTL: 5000 }); // Get gold price every 30 minutes
 
 const getGoldPrice = async () => {
   const cachedPrice = cache.get('goldPrice');

@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 
 const ProductCard = ({ product }) => {
   const [selectedColor, setSelectedColor] = useState('yellow');
-
+  
+  const COLOR_NAMES = {
+    yellow: 'Yellow Gold',
+    rose: 'Rose Gold',
+    white: 'White Gold',
+  };
+  
   const handleColorChange = (color) => {
     setSelectedColor(color);
   };
@@ -27,29 +33,33 @@ const ProductCard = ({ product }) => {
             style={{
               ...styles.colorButton,
               backgroundColor:
-                color === 'yellow' ? '#FFD700' :
-                color === 'rose'   ? '#FFB6C1' :
-                                     '#eee',
-              border: selectedColor === color ? '2px solid black' : '1px solid gray',
+                color === 'yellow' ? '#E6CA97' :
+                color === 'rose'   ? '#E1A4A9' :
+                                     '#D9D9D9',
+                border: 'none',
+                outline: selectedColor === color ? '1px solid black' : 'none',
+                outlineOffset: '2px',
             }}
           />
         ))}
+      </div>
+      
+      <div style={styles.selectedColorLabel}>
+        {COLOR_NAMES[selectedColor]}
       </div>
     </div>
   );
 };
 
-// 🎨 Stil nesnesi
 const styles = {
   card: {
-    border: '1px solid #ccc',
-    padding: '1rem',
+    padding: '3rem',
     marginBottom: '1rem',
   },
   image: {
     display: 'block',
     marginBottom: '1rem',
-    width: '200px',
+    width: '250px',
   },
   colorPickerContainer: {
     display: 'flex',
@@ -61,6 +71,7 @@ const styles = {
     height: 20,
     borderRadius: '50%',
     cursor: 'pointer',
+    padding: 8,
   },
 };
 

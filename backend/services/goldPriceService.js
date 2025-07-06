@@ -1,6 +1,15 @@
 const axios = require('axios');
+const NodeCache = require('node-cache');
+
+const cache = new NodeCache({ stdTTL: 1800 }); // Get gold price every 30 minutes
 
 const getGoldPrice = async () => {
+  const cachedPrice = cache.get('goldPrice');
+
+  if (cachedPrice) {
+    return cachedPrice;
+  }
+
   const API_KEY = process.env.GOLD_API_KEY;
   const url = `https://www.goldapi.io/api/XAU/USD`;
 
@@ -11,7 +20,11 @@ const getGoldPrice = async () => {
     }
   });
 
-  return res.data.price;
+  const price = res.data.price;
+
+  cache.set('goldPrice', price); // Save the cache
+  return price;
 };
 
 module.exports = getGoldPrice;
+

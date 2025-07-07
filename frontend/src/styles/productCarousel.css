@@ -1,0 +1,55 @@
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.arrow-button {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 1rem;
+}
+
+.carousel-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  width: 80%;
+  padding: 1rem 0;
+}
+
+.card-wrapper {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: clamp(200px, 24%, 400px)
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .card-wrapper {
+    width: 48%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .card-wrapper {
+    width: 90%;
+    
+  }
+
+  .arrow-button {
+    font-size: 1.5rem;
+    padding: 0;
+  }
+
+  .carousel-scroll-container {
+    width: 100%;
+    padding: 0;
+  }
+}

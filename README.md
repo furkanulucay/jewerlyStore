@@ -81,7 +81,7 @@ REACT_APP_API_URL=http://localhost:3001
 docker compose up --build
 ```
 
-- Frontend: http://localhost:3000  
+- Frontend(products page): http://localhost:3000/products  
 - Backend: http://localhost:3001
 
 ### Option B: Running Manually
